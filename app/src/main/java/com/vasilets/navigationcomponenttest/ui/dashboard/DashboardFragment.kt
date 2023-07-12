@@ -44,9 +44,22 @@ class DashboardFragment : Fragment() {
         binding.sampleRv.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding.sampleRv.adapter = sampleAdapter
     }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d("M_TestLifecycle", "Dashboard onCreate")
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.d("M_TestLifecycle", "Dashboard onResume")
+    }
     override fun onPause() {
-        Log.d("M_Test", "Dashboard onPause")
         super.onPause()
+        Log.d("M_TestLifecycle", "Dashboard onPause")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("M_TestLifecycle", "Dashboard onDestroy")
     }
 
     override fun onDestroyView() {

@@ -48,9 +48,23 @@ class ChannelFragment : Fragment() {
             findNavController().navigate(R.id.action_channel_to_overlayFragment)
         }
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d("M_TestLifecycle", "Channel onCreate")
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.d("M_TestLifecycle", "Channel onResume")
+    }
     override fun onPause() {
-        Log.d("M_Test", "Channel onPause")
         super.onPause()
+        Log.d("M_TestLifecycle", "Channel onPause")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("M_TestLifecycle", "Channel onDestroy")
     }
 
     override fun onDestroyView() {

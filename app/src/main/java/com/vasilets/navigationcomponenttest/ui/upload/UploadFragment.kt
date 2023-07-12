@@ -37,9 +37,22 @@ class UploadFragment : BottomSheetDialogFragment() {
         return root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d("M_TestLifecycle", "Upload onCreate")
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.d("M_TestLifecycle", "Upload onResume")
+    }
     override fun onPause() {
-        Log.d("M_Test", "Upload onPause")
         super.onPause()
+        Log.d("M_TestLifecycle", "Upload onPause")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("M_TestLifecycle", "Upload onDestroy")
     }
     override fun onDestroyView() {
         super.onDestroyView()

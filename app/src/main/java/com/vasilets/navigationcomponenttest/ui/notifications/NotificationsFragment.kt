@@ -1,6 +1,7 @@
 package com.vasilets.navigationcomponenttest.ui.notifications
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,6 +49,23 @@ class NotificationsFragment : Fragment() {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d("M_TestLifecycle", "Notifications onCreate")
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.d("M_TestLifecycle", "Notifications onResume")
+    }
+    override fun onPause() {
+        super.onPause()
+        Log.d("M_TestLifecycle", "Notifications onPause")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("M_TestLifecycle", "Notifications onDestroy")
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

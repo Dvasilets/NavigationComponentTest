@@ -46,9 +46,22 @@ class HomeFragment : Fragment() {
         }.attach()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d("M_TestLifecycle", "Home onCreate")
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.d("M_TestLifecycle", "Home onResume")
+    }
     override fun onPause() {
-        Log.d("M_Test", "Home onPause")
         super.onPause()
+        Log.d("M_TestLifecycle", "Home onPause")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("M_TestLifecycle", "Home onDestroy")
     }
 
     override fun onDestroyView() {
