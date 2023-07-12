@@ -3,7 +3,7 @@ package com.vasilets.navigationcomponenttest.ui.home
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.vasilets.navigationcomponenttest.ui.home.pagerFragments.FirstFragment
+import com.vasilets.navigationcomponenttest.ui.home.pagerFragments.PagerFragment
 
 class HomeAdapter(
     f: Fragment
@@ -18,7 +18,7 @@ class HomeAdapter(
     }
 
     override fun createFragment(position: Int): Fragment {
-        val fragment = FirstFragment()
+        val fragment = PagerFragment()
         fragment.arguments = Bundle().apply {
             putInt("param1", position + 1)
         }

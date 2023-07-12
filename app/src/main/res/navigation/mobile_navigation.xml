@@ -27,11 +27,31 @@
         android:id="@+id/navigation_notifications"
         android:name="com.vasilets.navigationcomponenttest.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_notifications">
+        <action
+            android:id="@+id/action_notifs_to_bs"
+            app:destination="@id/sample_bs"/>
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_channel"
         android:name="com.vasilets.navigationcomponenttest.ui.channel.ChannelFragment"
         android:label="Channel"
-        tools:layout="@layout/fragment_channel" />
+        tools:layout="@layout/fragment_channel">
+        <action
+            android:id="@+id/action_channel_to_overlayFragment"
+            app:destination="@id/overlay_fragment"/>
+    </fragment>
+
+    <dialog
+        android:id="@+id/sample_bs"
+        android:name="com.vasilets.navigationcomponenttest.ui.bottomSheets.BottomSheetFragment"
+        android:label="Bs"
+        tools:layout="@layout/fragment_bottom_sheet" />
+
+    <fragment
+        android:id="@+id/overlay_fragment"
+        android:name="com.vasilets.navigationcomponenttest.ui.overlay.OverlayFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
 </navigation>

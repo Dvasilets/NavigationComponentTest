@@ -7,7 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.vasilets.navigationcomponenttest.R
 import com.vasilets.navigationcomponenttest.databinding.FragmentNotificationsBinding
+import com.vasilets.navigationcomponenttest.ui.dashboard.sampleRv.SampleAdapter
 
 class NotificationsFragment : Fragment() {
 
@@ -16,6 +21,7 @@ class NotificationsFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +39,13 @@ class NotificationsFragment : Fragment() {
             textView.text = it
         }
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.notifsBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_notifs_to_bs)
+        }
     }
 
     override fun onDestroyView() {
