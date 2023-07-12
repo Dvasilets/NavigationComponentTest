@@ -63,21 +63,11 @@ object BottomNavConfigurator {
     fun BottomNavigationView.setBottomNav(navController: NavController) {
         setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.navigation_home -> performDefaultNavigation(item, navController)
-
-                R.id.navigation_dashboard -> performDefaultNavigation(item, navController)
-
-
                 R.id.navigation_upload -> {
                     navController.navigate(item.itemId)
                     true
                 }
-
-                R.id.navigation_notifications -> performDefaultNavigation(item, navController)
-
-                R.id.navigation_channel -> performDefaultNavigation(item, navController)
-
-                else -> performDefaultNavigation(item, navController)
+                else -> NavigationUI.onNavDestinationSelected(item, navController)
             }
         }
         val weakReference = WeakReference(this)
@@ -100,16 +90,6 @@ object BottomNavConfigurator {
                     }
                 }
             })
-    }
-
-    private fun performDefaultNavigation(
-        itemView: MenuItem,
-        navController: NavController
-    ): Boolean {
-        return NavigationUI.onNavDestinationSelected(
-            itemView,
-            navController
-        )
     }
 
     fun BottomNavigationView.handleBottomNavVisibility(navController: NavController) {
