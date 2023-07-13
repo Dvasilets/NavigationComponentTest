@@ -93,8 +93,8 @@ object BottomNavConfigurator {
     }
 
     fun BottomNavigationView.handleBottomNavVisibility(navController: NavController) {
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            visibility = if (destination.id == R.id.overlay_fragment) {
+        navController.addOnDestinationChangedListener { _, _, bundle ->
+            visibility = if (bundle?.getBoolean("overlay", false) == true) {
                 View.GONE
             } else {
                 View.VISIBLE

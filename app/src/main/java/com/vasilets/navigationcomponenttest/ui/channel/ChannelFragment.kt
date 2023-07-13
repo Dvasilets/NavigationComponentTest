@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -45,6 +46,7 @@ class ChannelFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.channelBtn.setOnClickListener {
+            //val bundle = bundleOf("overlay" to true)
             findNavController().navigate(R.id.action_channel_to_overlayFragment)
         }
     }

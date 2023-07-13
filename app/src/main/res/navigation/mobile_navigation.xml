@@ -53,5 +53,10 @@
         android:id="@+id/overlay_fragment"
         android:name="com.vasilets.navigationcomponenttest.ui.overlay.OverlayFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_notifications">
+        <argument
+            android:name="overlay"
+            app:argType="boolean"
+            android:defaultValue="true"/>
+    </fragment>
 </navigation>
