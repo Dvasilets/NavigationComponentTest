@@ -2,11 +2,14 @@ package com.vasilets.navigationcomponenttest.ui.home.pagerFragments
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.ui.PlayerView
 import com.vasilets.navigationcomponenttest.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -23,9 +26,12 @@ class PagerFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: Int? = null
     private var param2: String? = null
+    private var player:  ExoPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("M_LifecycleTest", "$param1 tab onCreate")
+        player = context?.let { ExoPlayer.Builder(it).build() }
         arguments?.let {
             param1 = it.getInt(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -42,11 +48,35 @@ class PagerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<TextView>(R.id.text_first).text = param1.toString()
+        val playerView = view.findViewById<PlayerView>(R.id.exo_player)
+        if(param1 == 2) {
+            playerView.visibility = View.VISIBLE
+            playerView.player = player
+            val mediaItem: MediaItem =
+                MediaItem.fromUri("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
+            player?.addMediaItem(mediaItem)
+            player?.prepare()
+            player?.playWhenReady = true
+        }
+        else{
+            playerView.visibility = View.GONE
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        player?.play()
     }
 
     override fun onPause() {
-        Log.d("M_FirstFragment", "$param1 tab onPause")
+        Log.d("M_LifecycleTest", "$param1 tab onPause")
         super.onPause()
+        player?.pause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("M_LifecycleTest", "$param1 tab onDestr")
     }
 
     companion object {

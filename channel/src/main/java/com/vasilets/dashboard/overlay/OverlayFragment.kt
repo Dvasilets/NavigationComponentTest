@@ -1,12 +1,12 @@
-package com.vasilets.navigationcomponenttest.ui.overlay
+package com.vasilets.dashboard.overlay
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.vasilets.navigationcomponenttest.R
+import androidx.fragment.app.Fragment
+import com.vasilets.dashboard.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
